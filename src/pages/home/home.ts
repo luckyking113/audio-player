@@ -11,4 +11,8 @@ export class HomePage {
 
   }
 
+  openPlayMusicPage(){
+    console.log('adsfadf');
+  }
+
 }

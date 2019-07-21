@@ -1,14 +1,30 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-toolbar class="new-background-color">    
+        <ion-searchbar placeHolder="Search Music">
+        </ion-searchbar>   
+    </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+    <ion-grid>
+        <ion-row class="imageContainer">
+            <img src="../../assets/backgroundimg.png" />
+        </ion-row>
+
+        <ion-row class="language-btn">
+            <ion-col size="6" style="text-align: right;padding-right: 4%;">                
+                <button ion-button class="language-EB" (click)="openPlayMusicPage();">BE</button>    
+            </ion-col>            
+            <ion-col size="6" style="text-align: left;padding-left: 4%;">                
+                <button ion-button class="language-EB" (click)="openPlayMusicPage();">EB</button>    
+            </ion-col>            
+        </ion-row>
+
+        <ion-row class="card-slide-row">
+            <ion-col size="12" style="text-align: center">
+                <h1 style="color:white">Recent Music</h1>
+            </ion-col>
+            
+        </ion-row>
+    </ion-grid>
 </ion-content>
