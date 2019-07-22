@@ -1,0 +1,113 @@
+page-music-play {
+    h1,h2,h3,h4,h5,p{
+        margin: 0px;
+    }
+    #app-section {
+        #app-title {
+            color: color($colors, 'primary');
+            text-transform: uppercase;
+        }
+        ion-icon {
+            font-size: 15rem;
+        }
+    }
+    #media-controls {
+        button {
+            ion-icon {
+                font-size: 2.5rem;
+            }            
+        }
+    }
+
+    .toolbar-background{
+        background: #343547;
+    }
+    .fixed-content{
+        background:#323546;
+    }
+
+    .toolbar-title{
+        color: white;
+    }
+    .button-inner {
+        color: white;
+    }
+    .grid{
+        padding: 0px;
+        height: 100%;
+    }
+
+    .imageContainer {
+        height: 40%;
+        background-color: #3a404c;
+    }    
+    .imageContainer img {
+        opacity: 0.6;
+        width: 100%;
+        height: 100%;
+    }
+
+    .music-play-time{
+        text-align: center;
+        background: #303241;
+        padding: 2%;
+        width: 100%;
+        opacity: 0.6;
+        margin-top: -42px;
+    }
+    .music-play-time p {
+        margin: 0px;
+        color: white;
+        font-weight: 100;
+        font-size: 16px;
+    }
+    .music-play-time span {
+        margin-left: 10px;
+        font-weight: bolder;
+    }
+
+    .music-detail {
+        text-align: center;
+        background: #303241;
+        padding: 5% 2%;
+        height: 30%;
+    }
+
+    .audio-title {
+        width: 100%;
+        color: white;
+        text-align: center;
+    }
+
+    .music-title{
+        width: 100%;
+        margin-top: 10px;
+        color: white;
+        height: 30px;
+    }
+
+    .music-title h1 {
+        font-size: 30px;
+    }
+
+    .singer-name {
+        width: 100%;        
+        color: white;
+        height: 23px;        
+    }
+
+    .singer-name h3 {
+        font-size: 23px;
+    }
+
+    .lynics {
+        width: 100%;        
+        color: white;
+        height: 23px;  
+    }
+
+    .lynics p {
+        font-size: 16px;
+    }
+
+}

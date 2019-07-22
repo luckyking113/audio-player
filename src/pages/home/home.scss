@@ -15,7 +15,6 @@ page-home {
         margin: 0px !important; 
         padding-top: 90px !important;
     }
-
     .scroll-content {
         margin: 0px !important;
         padding-top: 90px !important;
@@ -62,4 +61,21 @@ page-home {
     .card-slide-row {
         height: 40%;
     }
+
+    .recnet-music-list {
+        text-align: center;
+        // height: 15%;
+    }
+
+    .ion-text-start {        
+        border-top-left-radius: 8px !important;
+        border-top-right-radius: 8px !important;
+    }
+
+    ion-card-content {
+        background: #323546;
+        color: white;
+    }
+
+
 }

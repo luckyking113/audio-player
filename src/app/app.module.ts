@@ -3,9 +3,16 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import {HttpClientModule} from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { AudioProvider } from '../providers/audio/audio';
+import { CloudProvider } from '../providers/cloud/cloud';
+
+import { StoreModule } from '@ngrx/store';
+import { mediaStateReducer } from '../providers/store/store';
+
 
 @NgModule({
   declarations: [
@@ -13,7 +20,11 @@ import { HomePage } from '../pages/home/home';
     HomePage
   ],
   imports: [
-    BrowserModule,
+    BrowserModule,    
+    HttpClientModule,
+    StoreModule.forRoot({
+      appState: mediaStateReducer
+    }),
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -24,7 +35,9 @@ import { HomePage } from '../pages/home/home';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AudioProvider,
+    CloudProvider
   ]
 })
 export class AppModule {}
