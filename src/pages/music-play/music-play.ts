@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Navbar, Content, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Navbar, Content, LoadingController, PopoverController } from 'ionic-angular';
 // import {Component, ViewChild} from '@angular/core';
 import {trigger, state, style, animate, transition } from '@angular/animations';
 // import {NavController, NavParams, Navbar, Content, LoadingController} from 'ionic-angular';
@@ -9,6 +9,7 @@ import {CANPLAY, LOADEDMETADATA, PLAYING, TIMEUPDATE, LOADSTART, RESET} from '..
 import {Store} from '@ngrx/store';
 import {CloudProvider} from '../../providers/cloud/cloud';
 import {pluck, filter, map, distinctUntilChanged} from 'rxjs/operators';
+import { MusicListpopoverComponent } from '../../components/music-listpopover/music-listpopover';
 
 
 @IonicPage()
@@ -41,6 +42,11 @@ export class MusicPlayPage {
   onSeekState: boolean;
   currentFile: any = {};
   displayFooter: string = "inactive";
+
+  selectedAudioForPlay : string = '';
+  singerName:string = '';
+  musicTitle: string = '';
+  audioLynics: string = '';
   
   @ViewChild(Navbar) navBar: Navbar;
   @ViewChild(Content) content: Content;
@@ -55,9 +61,32 @@ export class MusicPlayPage {
     public loadingCtrl: LoadingController,
     public cloudProvider: CloudProvider,
     private store: Store<any>,    
+    public popoverCtrl:PopoverController
   ) 
     {
       this.getDocuments();
+      this.selectedAudioForPlay = this.files[0].name;
+      this.singerName = this.files[0].singername;
+      this.musicTitle = this.files[0].musictitle;
+      this.audioLynics = this.files[0].lynics;
+  }
+
+  ///popover function for showing the audio list
+  presentPopover(myEvent){
+    
+    let popover = this.popoverCtrl.create(MusicListpopoverComponent);
+    popover.present({
+      ev:myEvent
+    });
+
+    popover.onDidDismiss((audioList, index) => {
+      this.selectedAudioForPlay = audioList.name;
+      this.singerName = audioList.singername;
+      this.musicTitle = audioList.musictitle;
+      this.audioLynics = audioList.lynics;
+      // console.log(audioList.singername);
+      this.openFile(audioList, index);
+    })
   }
 
   ionViewDidLoad() {    
@@ -67,10 +96,8 @@ export class MusicPlayPage {
     let loader = this.presentLoading();
     this.cloudProvider.getFiles().subscribe(files => {
       this.files = files;
-      loader.dismiss();
-    });
-
-    
+      loader.dismiss();      
+    });    
   }
 
   presentLoading() {  
@@ -173,6 +200,7 @@ export class MusicPlayPage {
   }
 
   play() {
+    console.log("play test");
     this.audioProvider.play();
   }
 

@@ -12,12 +12,14 @@ import { CloudProvider } from '../providers/cloud/cloud';
 
 import { StoreModule } from '@ngrx/store';
 import { mediaStateReducer } from '../providers/store/store';
+import { MusicListpopoverComponent } from '../components/music-listpopover/music-listpopover';
 
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    MusicListpopoverComponent
   ],
   imports: [
     BrowserModule,    
@@ -30,7 +32,8 @@ import { mediaStateReducer } from '../providers/store/store';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    MusicListpopoverComponent
   ],
   providers: [
     StatusBar,

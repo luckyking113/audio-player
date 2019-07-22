@@ -110,4 +110,23 @@ page-music-play {
         font-size: 16px;
     }
 
+    .music-control {
+        height: 30%;
+    }
+
+    .music-control-banner{
+        height: 100%;
+        width: 100%;
+    }   
+
+    .popover-content {
+        transform-origin: top !important;
+        transform: scale(1);        
+    }
+
+    .music-list-button {
+        background: transparent !important;
+    }
+
+
 }

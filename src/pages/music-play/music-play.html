@@ -6,7 +6,12 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>Music Player</ion-title>
+    <ion-title>
+        <button ion-button (click)="presentPopover($event)" class="music-list-button">{{selectedAudioForPlay}}
+            <ion-icon name="md-arrow-dropdown" id="icon_lang" style="margin-left:20px;"></ion-icon>
+        </button>
+    </ion-title>   
+    
   </ion-navbar>
 </ion-header>
 
@@ -17,27 +22,30 @@
 
             <ion-row class="music-play-time">
                 <ion-col size="6">
-                    <p>Track time<span>04:00</span></p>
+                    <p>Track time<span>{{ state.time }}</span></p>
                 </ion-col>
                 <ion-col size="6">
-                    <p>Remain time<span>04:00</span></p>
+                    <p>Remain time<span>{{ state.duration }}</span></p>
                 </ion-col>
             </ion-row>
         </ion-row>
 
         <ion-row class="music-detail">
             <div class="music-title">
-                <h1>Music title</h1>
+                <!-- <h1>Music title</h1> -->
+                <h1>{{musicTitle}}</h1>
             </div>
             <div class="singer-name"> 
-                <h3>Singer Name</h3>
+                <!-- <h3>Singer Name</h3> -->
+                <h3>{{singerName}}</h3>
             </div>   
             <div class="lynics"> 
-                <p>lynics lynics mlynics lynics lynics lynics</p>
+                <!-- <p>lynics lynics mlynics lynics lynics lynics</p> -->
+                <p>{{audioLynics}}</p>
             </div>                        
         </ion-row>
         <ion-row class="music-control">
-            <ion-list *ngIf="files.length">    
+            <!-- <ion-list *ngIf="files.length">    
                 <ng-container *ngFor="let file of files; let i = index">
                     <ion-item text-wrap (click)="openFile(file, i)">
                     <ion-icon color="primary" item-start name="musical-note"></ion-icon>{{ file.name }}
@@ -45,16 +53,17 @@
                     <ion-icon item-end name="play" *ngIf="currentFile.index !== i"></ion-icon>
                     </ion-item>
                 </ng-container>
-            </ion-list>
-                <ion-toolbar color="primary">
+            </ion-list> -->
+            <ion-row class="music-control-banner">
+                <ion-toolbar style="padding-left: 20px; padding-right: 20px;">
                     <ion-range min="0" color="light" [max]="state.durationSec" [formControl]="seekbar" (ionFocus)="onSeekStart()" (ionBlur)="onSeekEnd($event)"
                                 name="seekbar">
-                    <ion-label color="light" range-left>{{ state.time }}</ion-label>
-                    <ion-label color="light" range-right>{{ state.duration }}</ion-label>
+                    <!-- <ion-label color="light" range-left>{{ state.time }}</ion-label>
+                    <ion-label color="light" range-right>{{ state.duration }}</ion-label> -->
                     </ion-range>
                 </ion-toolbar>
                 
-                <ion-toolbar color="primary" padding>
+                <ion-toolbar padding>
                     <ion-grid>
                     <ion-row align-items-center id="media-controls">
                         <button clear ion-col ion-button [disabled]="isFirstPlaying()" (click)="previous()">
@@ -72,6 +81,7 @@
                     </ion-row>
                     </ion-grid>
                 </ion-toolbar>
+            </ion-row>
         </ion-row>
     </ion-grid>
 
