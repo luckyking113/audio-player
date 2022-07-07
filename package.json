@@ -28,7 +28,7 @@
     "cordova-android": "8.0.0",
     "ionic-angular": "3.9.5",
     "ionicons": "3.0.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "rxjs": "^6.2.1",
     "rxjs-compat": "^6.2.1",
     "sw-toolbox": "3.6.0",
